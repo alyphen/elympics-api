@@ -2,6 +2,7 @@ group 'games.dollarone'
 version '1.0.0'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -19,6 +20,12 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
+File propertiesFile = new File("repo.properties")
+Properties properties = new Properties()
+properties.load(new FileInputStream(propertiesFile))
+def repoUserName = properties.getProperty("repo-username")
+def repoPassword = properties.getProperty("repo-password")
+
 uploadArchives {
     repositories.mavenDeployer {
 
@@ -26,9 +33,9 @@ uploadArchives {
             authentication(userName: repoUserName, password: repoPassword)
         }
 
-        pom.version = project(":elympics-api").version
-        pom.artifactId = project(":elympics-api").name
-        pom.groupId = project(":elympics-api").group
+        pom.version = project.version
+        pom.artifactId = project.name
+        pom.groupId = project.group
 
     }
 }
