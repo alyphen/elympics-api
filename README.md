@@ -23,7 +23,7 @@ See https://dollarone.games/elympics/ to get a key.
 ## Gradle
 ```groovy
 repositories {
-    maven { url "https://repo.seventh-root.com/artifactory/libs-release-local" }
+    maven { url "https://repo.seventh-root.com/artifactory/libs-release-local/" }
 }
 dependencies {
     compile group: 'games.dollarone', name: 'elympics-api', version: '1.0.0'
